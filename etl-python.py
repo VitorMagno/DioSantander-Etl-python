@@ -16,8 +16,10 @@ df_anime_filtrado.sort_values(by='members', ascending=False).head(10)
 # %%
 df_anime_filtrado.sort_values(by='rating', ascending=False).head(10)
 # %%
-df_rating_anime = pd.merge(left=df_rating, right=df_anime_filtrado, on='anime_id',how='left')
+df_user_rating_anime = pd.merge(left=df_rating, right=df_anime_filtrado, on='anime_id',how='left')
 columns=['user_id','anime_id','rating_x','name']
-df_rating_anime = df_rating_anime[columns]
+df_user_rating_anime = df_user_rating_anime[columns]
+#%%
+df_user_rating_anime.rename(columns={"rating_x": "user_rating"},inplace=True)
 # %%
-df_rating_anime
+df_user_rating_anime.head(10)
